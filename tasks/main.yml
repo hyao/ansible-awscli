@@ -1,0 +1,41 @@
+---
+# tasks file for awscli
+
+- name: pip install awscli
+  pip: name=awscli state=latest
+  sudo: yes
+
+- name: enable tab completion for awscli
+  lineinfile:
+    dest={{ awscli_user_home }}/.bashrc
+    line="complete -C aws_completer aws"
+    state=present
+
+- name: create .aws dir under user home for awscli config 
+  file:  
+    path={{ awscli_user_home }}/.aws
+    state=directory
+    owner={{ awscli_user }}
+    group={{ awscli_group }}
+    mode=0755
+
+- name: copy awscli config to vm
+  copy: 
+    src=awscli_config 
+    dest={{ awscli_user_home }}/.aws/config 
+    owner={{ awscli_user }}
+    group={{ awscli_group }}
+    mode=0664
+  when: awscli_config_file == True
+
+# put together a config file for awscli using templates
+- name: copy awscli config to vm using templates
+  template:  
+    src=awscli_config.j2
+    dest={{ awscli_user_home }}/.aws/config 
+    owner={{ awscli_user }}
+    group={{ awscli_group }}
+    mode=0644
+  when: awscli_config_file == False 
+
+

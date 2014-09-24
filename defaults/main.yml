@@ -1,0 +1,17 @@
+---
+# defaults file for awscli
+
+awscli_user: ubuntu
+awscli_group: ubuntu
+awscli_user_home: /home/ubuntu
+
+# is there a awscli_config file under files dir
+# no need to config the rest of variables if awscli_config exists
+# True or False
+awscli_config_file: False 
+
+awscli_aws_access_key_id: your_key_id
+awscli_aws_secret_access_key: the_secret_key
+
+# default region
+awscli_region: us-east-1
