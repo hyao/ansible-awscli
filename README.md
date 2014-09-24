@@ -1,12 +1,12 @@
 Ansible Role for AWSCLI
 ==============================
 
-This is an Ansible role for awscli: https://github.com/aws/aws-cli This role installs awscli using pip, and set up awscli's config file, and it also enables auto completion for aws cli commands.
+This is an Ansible role for awscli: https://github.com/aws/aws-cli. This role installs awscli using pip, sets up awscli's config file, and also enables auto completion for awscli commands.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+pip (python-pip on Ubuntu/Debian) needs to be installed for this role to work.
 
 Role Variables
 --------------
